@@ -42,12 +42,11 @@ app.get('/hello/:name', (req, res) => {
 
 app.post('/contact/send-message', (req, res) => {
 
-    const { author, sender, title, message} = req.body;
-    const { fileName } = req.files;
+    const { author, sender, title, message } = req.body;
+    const { name } = req.files.file;
 
-    if(author && sender && title && message && fileName) {
-        res.render('contact', { isSent: true, file: fileName });
-        console.log('filename', fileName);
+    if(author && sender && title && message && name) {
+        res.render('contact', { isSent: true, file: name });
     } else {
         res.render('contact', { isError: true });
     }
